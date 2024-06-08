@@ -13,11 +13,23 @@ function clickLike2(){
 }
 btnLike2.addEventListener("click",clickLike2)
 
-const comment = document.getElementById("comment")
-const submit = document.getElementById("submit")
-const commentbox = document.getElementById("commentbox")
+const btnLike = document.getElementById("btnLike");
+const btnUnlike = document.getElementById("btnUnlike");
+const countLikes = document.getElementById("countLikes");
 
-function submitComment(){
-  commentbox.textContent += comment.value.toString() + "\n"
+function like() {
+  let totalLikes = parseInt(countLikes.textContent) + 1;
+  countLikes.textContent = totalLikes.toString();
+  btnLike.style.display = "none";
+  btnUnlike.style.display = "inline";
 }
-submit.addEventListener("click",submitComment)
+
+function unlike() {
+  let totalLikes = parseInt(countLikes.textContent) - 1;
+  countLikes.textContent = totalLikes.toString();
+  btnLike.style.display = "inline";
+  btnUnlike.style.display = "none";
+}
+
+btnLike.addEventListener("click", like);
+btnUnlike.addEventListener("click", unlike);
